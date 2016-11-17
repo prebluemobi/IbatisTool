@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/freemarker-2.3.19.jar"/>
+	<classpathentry kind="lib" path="lib/jconn2.jar"/>
+	<classpathentry kind="lib" path="lib/mysql6.0.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.1-901.jdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/sqljdbc4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

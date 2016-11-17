@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.www.data.dao.discover.MoneyStoreDao">
+
+	<resultMap id="colomnResult" type="com.bluemobi.www.data.model.discover.MoneyStore">
+		<id property="id" column="id" />
+		<result property="userid" column="userid" />
+		<result property="money" column="money" />
+		<result property="reverse1" column="reverse1" />
+		<result property="reverse2" column="reverse2" />
+		<result property="revsere3" column="revsere3" />
+		<result property="passwd" column="passwd" />
+	</resultMap>
+	<!-- 动态sql -->
+	<sql id="colomnResult">
+		<![CDATA[
+	     id,
+	     userid,
+	     money,
+	     reverse1,
+	     reverse2,
+	     revsere3,
+	     passwd
+	 ]]>
+	</sql>
+	<insert id="insert">
+	   insert into money_store  
+	   <trim prefix="(" suffix=")" suffixOverrides=",">
+			     <if test="id!=null">id,</if>
+			     <if test="userid!=null">userid,</if>
+			     <if test="money!=null">money,</if>
+			     <if test="reverse1!=null">reverse1,</if>
+			     <if test="reverse2!=null">reverse2,</if>
+			     <if test="revsere3!=null">revsere3,</if>
+			     <if test="passwd!=null">passwd,</if>
+		</trim>
+	   	<trim prefix="values(" suffix=")" suffixOverrides=",">
+			     <if test="id!=null">#{id},</if>
+			     <if test="userid!=null">#{userid},</if>
+			     <if test="money!=null">#{money},</if>
+			     <if test="reverse1!=null">#{reverse1},</if>
+			     <if test="reverse2!=null">#{reverse2},</if>
+			     <if test="revsere3!=null">#{revsere3},</if>
+			     <if test="passwd!=null">#{passwd},</if>
+		</trim>
+	</insert>
+
+	<update id="update">
+	   update money_store 
+	   <set>
+			     <if test="id!=null">id=#{id},</if>
+			     <if test="userid!=null">userid=#{userid},</if>
+			     <if test="money!=null">money=#{money},</if>
+			     <if test="reverse1!=null">reverse1=#{reverse1},</if>
+			     <if test="reverse2!=null">reverse2=#{reverse2},</if>
+			     <if test="revsere3!=null">revsere3=#{revsere3},</if>
+			     <if test="passwd!=null">passwd=#{passwd},</if>
+		</set>
+		where 
+	   		 id=#{id} 
+	</update>
+
+	<delete id="delete">
+	   delete from
+	     money_store 
+	   where 
+	    id=#{id} 
+	</delete>
+
+	<select id="selectEntity" resultMap="colomnResult">
+	   select 
+	<include refid="colomnResult" /> 
+	   from money_store
+	  <where>
+				<if test=" id != null and id != '' ">
+					and id=#{id} 
+				</if>
+				<if test=" userid != null and userid != '' ">
+					and userid=#{userid} 
+				</if>
+				<if test=" money != null and money != '' ">
+					and money=#{money} 
+				</if>
+				<if test=" reverse1 != null and reverse1 != '' ">
+					and reverse1=#{reverse1} 
+				</if>
+				<if test=" reverse2 != null and reverse2 != '' ">
+					and reverse2=#{reverse2} 
+				</if>
+				<if test=" revsere3 != null and revsere3 != '' ">
+					and revsere3=#{revsere3} 
+				</if>
+				<if test=" passwd != null and passwd != '' ">
+					and passwd=#{passwd} 
+				</if>
+		</where>
+	</select>
+	
+	<!-- 根据条件信息 -->
+	<select id="selectAll"  resultMap="colomnResult">
+		select
+		<include refid="colomnResult" /> 
+		<![CDATA[
+			from money_store
+		]]>
+		<where>
+				<if test=" id != null and id != '' ">
+					and id=#{id} 
+				</if>
+				<if test=" userid != null and userid != '' ">
+					and userid=#{userid} 
+				</if>
+				<if test=" money != null and money != '' ">
+					and money=#{money} 
+				</if>
+				<if test=" reverse1 != null and reverse1 != '' ">
+					and reverse1=#{reverse1} 
+				</if>
+				<if test=" reverse2 != null and reverse2 != '' ">
+					and reverse2=#{reverse2} 
+				</if>
+				<if test=" revsere3 != null and revsere3 != '' ">
+					and revsere3=#{revsere3} 
+				</if>
+				<if test=" passwd != null and passwd != '' ">
+					and passwd=#{passwd} 
+				</if>
+		</where>
+		<if test="sort != null">
+				order by ${sort} ${order}
+		</if>
+	</select>
+	<!-- 根据条件查询数量 -->
+	<select id="selectCount"  resultType="int">
+
+		select count(id) from money_store
+		<where>
+				<if test=" id != null and id != '' ">
+					and id=#{id} 
+				</if>
+				<if test=" userid != null and userid != '' ">
+					and userid=#{userid} 
+				</if>
+				<if test=" money != null and money != '' ">
+					and money=#{money} 
+				</if>
+				<if test=" reverse1 != null and reverse1 != '' ">
+					and reverse1=#{reverse1} 
+				</if>
+				<if test=" reverse2 != null and reverse2 != '' ">
+					and reverse2=#{reverse2} 
+				</if>
+				<if test=" revsere3 != null and revsere3 != '' ">
+					and revsere3=#{revsere3} 
+				</if>
+				<if test=" passwd != null and passwd != '' ">
+					and passwd=#{passwd} 
+				</if>
+		</where>
+	</select>
+	<!-- 根据主键查询信息 -->
+	<select id="selectById"  resultMap="colomnResult">
+		select
+		<include refid="colomnResult" /> 
+		<![CDATA[
+			from money_store where 
+			
+			   	 id=#{id} 
+		]]>
+		
+	</select>
+	
+	<!-- 批量删除 -->
+	<select id="selectByIds" parameterType="java.util.List" resultMap="colomnResult">
+		select
+		<include refid="colomnResult" /> 
+		 from money_store where id in
+		<foreach item="idList" index="index" collection="list" open="(" separator="," close=")">
+  			#{idList}
+ 		</foreach>
+	</select>
+		
+	<!-- 批量删除 -->
+	<delete id="batchDelete" parameterType="java.util.List">
+		delete from money_store where id in
+		<foreach item="idList" index="index" collection="list" open="(" separator="," close=")">
+  			#{idList}
+ 		</foreach>
+	</delete>
+	
+	<!-- 批量修改 -->
+	<update id="batchUpdate" parameterType="java.util.HashMap">
+		update money_store
+		<set>
+			     <if test="id!=null">id=#{id},</if>
+			     <if test="userid!=null">userid=#{userid},</if>
+			     <if test="money!=null">money=#{money},</if>
+			     <if test="reverse1!=null">reverse1=#{reverse1},</if>
+			     <if test="reverse2!=null">reverse2=#{reverse2},</if>
+			     <if test="revsere3!=null">revsere3=#{revsere3},</if>
+			     <if test="passwd!=null">passwd=#{passwd},</if>
+		</set>
+		where id in
+		<foreach item="idList" index="index" collection="list" open="(" separator="," close=")">
+  			#{idList}
+ 		</foreach>
+	</update>
+</mapper> 
