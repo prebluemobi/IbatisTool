@@ -23,7 +23,7 @@ public class Main {
 			mg.DATE=formatter.format(new Date());
 			//mg.PACKAGE="discover";
 			String[] table = new String[] {
-					"user_info"
+					"system_role_authority"
 			};
 			mg.gener(table);
 		} catch (Exception e) {
